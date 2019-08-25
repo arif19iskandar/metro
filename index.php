@@ -107,7 +107,7 @@
         #home {
             min-height: 100vh;
             background-image: url(assets/img/image_1.png);
-            background-position-x: left;
+            background-position-x: center;
             background-repeat: no-repeat;
             background-size: cover;
             background-position-y: bottom;
@@ -122,7 +122,7 @@
         }
         #enquires {
             background-image: url(assets/img/image_2.png);
-            background-position-x: left;
+            background-position-x: center;
             background-repeat: no-repeat;
             background-size: cover;
             background-position-y: top;
