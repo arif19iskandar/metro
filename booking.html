@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Metro Limo Service</title>
+        <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+
+        <!-- Stylesheet -->
+        <link rel="stylesheet" href="assets/css/bootstrap.min.css"> 
+        <link rel="stylesheet" href="assets/css/animate.css">
+        <link rel="stylesheet" href="assets/css/tempusdominus-bootstrap-4.min.css">
+        <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.css">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700,800,900,bolder&display=swap" rel="stylesheet">
+        <style>
+            * {
+               transition: all .3s ease-in-out;
+                font-family: 'Open Sans', sans-serif;
+            }
+            html, body {
+                padding: 0;
+                margin: 0;
+                height: 100vh;
+                width: 100vw;
+                overflow: hidden;
+                background-color: #ffffff;
+                background-image: url(assets/img/bg_booking.png);
+                background-attachment: fixed;
+                background-repeat: no-repeat;
+                background-size: cover;
+                background-position-x: center;
+                background-position-y: center;
+            }
+            svg {
+                height: 25px;
+            }
+            svg.checked {
+                height: 16px;
+            }
+            .modal .checked {
+                height: 24px;
+            }
+            .btn.hide {
+                opacity: 0;
+                pointer-events: none;
+            }
+            .btn.show {
+                opacity: 1;
+            }
+            .nav .nav-link {
+                height: 40px;
+                width: 0;
+                padding: 2px;
+                margin: 6px 0;
+                background: #cccccc;
+                cursor: not-allowed;
+            }
+            .nav .nav-link.done {
+                cursor: pointer;
+            }
+            a.text-dark {
+                color: black !important;
+            }
+            .nav .nav-link.active {
+                background: #000000 !important;
+                cursor: pointer;
+            }
+            input {
+                color: red !important;
+                font-size: 24px !important;
+                font-weight: bold !important;
+                border:none !important;
+                outline: 0 !important;
+                box-shadow: none !important;
+                text-align: center;
+            }
+            input::placeholder{
+                color: red !important;
+                font-size: 24px;
+                font-weight: bold;
+                text-align: center;
+            }
+            input:focus {
+                color: red !important;
+                font-size: 16px;
+                font-weight: bold;
+                border:none !important;
+                outline: 0 !important;
+                box-shadow: none !important;
+            }
+            section {
+                opacity: 0;
+                height: 100%;
+                width: 100%;
+                left: 0;
+                top: 100%;
+            }
+            section.active {
+                opacity: 1;
+                top: 0;
+            }
+            @media only screen and (max-width: 767px) {
+                .nav .nav-link {
+                    flex: 1;
+                    margin: 0 5px;
+                    height: 2px;
+                }
+                input, input::placeholder, input:focus {
+                    font-size: 16px !important;
+                }
+            }
+            
+            #datetime {
+                cursor: pointer;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container py-5">
+            <a class="btn btn-link" href="./">
+                <img src="assets/img/icon/back_arrow.svg" class="svg text-white mail mr-2" height="40">
+            </a>
+            <h4 class="text-center d-none d-md-block number">01/07</h4>
+            <h5 class="text-center d-block d-md-none number">01/07</h5>
+            <div class="row" style="height: -webkit-fill-available;">
+                <div class="col-md-1 align-self-center mb-2">
+                    <nav class="nav flex-md-column">
+                        <a class="nav-link done active" href="#a"></a>
+                        <a class="nav-link" href="#b"></a>
+                        <a class="nav-link" href="#c"></a>
+                        <a class="nav-link" href="#d"></a>
+                        <a class="nav-link" href="#e"></a>
+                        <a class="nav-link" href="#f"></a>
+                        <a class="nav-link" href="#g"></a>
+                    </nav>
+                </div>
+                <div class="col-md-10 d-flex position-relative"  style="height: -webkit-fill-available;" id="content">
+                    <section id="a" class="active text-center m-auto position-absolute d-flex">
+                        <div class="align-self-center w-100">
+                            <div class="container">
+                                <h2 class="d-none d-md-block font-weight-bold  mb-4">When you want us to pickup ?</h2>
+                                <h4 class="d-md-none d-block font-weight-bold  mb-4">When you want us to pickup ?</h4>
+                                <div class="row justify-content-center">
+                                    <div class="col-md-8 col-lg-6 mb-4">
+                                        <input placeholder="Enter pickup date & time" type="text" class="form-control datetimepicker-input bg-transparent border-0 form-control rounded-0 m-auto" style="border-bottom: 2px solid red !important" id="datetime" data-toggle="datetimepicker" data-target="#datetime"/>
+                                    </div>
+                                </div>
+                                <a id="next_datetime" href="#b" class="mb-5 next btn text-dark hide font-weight-bold" style="background: #a0c230">OK<img src="assets/img/icon/checked.svg" class="svg text-white mail ml-2 checked" style="height: 10px"></a>
+    
+                                <p class="font-weight-bold text-secondary mt-5">Can i get your address ?</p>
+                            </div>
+                        </div>
+                    </section>
+                    <section id="b" class="text-center position-absolute d-flex">
+                        <div class="align-self-center w-100">
+                            <div class="container">
+                                <h2 class="d-none d-md-block font-weight-bold  mb-4">Can i get your address ?</h2>
+                                <h4 class="d-md-none d-block font-weight-bold  mb-4">Can i get your address ?</h4>
+                                <div class="row justify-content-center">
+                                    <div class="col-md-8 col-lg-6 mb-4">
+                                        <input placeholder="Enter Your address" type="text" class="form-control datetimepicker-input bg-transparent border-0 form-control rounded-0 m-auto" style="border-bottom: 2px solid red !important" id="address" />
+                                    </div>
+                                </div>
+                                <a id="next_address" href="#c" class="mb-5 next btn text-dark hide font-weight-bold" style="background: #a0c230">OK<img src="assets/img/icon/checked.svg" class="svg text-white mail ml-2 checked" style="height: 10px"></a>
+    
+                                <p class="font-weight-bold text-secondary mt-5">Where do you going to</p>
+                            </div>
+                        </div>  
+                    </section>
+                    <section id="c" class="text-center position-absolute d-flex">
+                        <div class="align-self-center w-100">
+                            <div class="container">
+                                <h2 class="d-none d-md-block font-weight-bold  mb-4">Where do you going to</h2>
+                                <h4 class="d-md-none d-block font-weight-bold  mb-4">Where do you going to</h4>
+                                <div class="row justify-content-center">
+                                    <div class="col-md-8 col-lg-6 mb-4">
+                                        <input placeholder="Enter drop off address" type="text" class="form-control datetimepicker-input bg-transparent border-0 form-control rounded-0 m-auto" style="border-bottom: 2px solid red !important" id="dropoff" />
+                                    </div>
+                                </div>
+                                <a id="next_dropoff" href="#d" class="mb-5 next btn text-dark hide font-weight-bold" style="background: #a0c230">OK<img src="assets/img/icon/checked.svg" class="svg text-white mail ml-2 checked" style="height: 10px"></a>
+    
+                                <p class="font-weight-bold text-secondary mt-5">Can I get your full name ?</p>
+                            </div>
+                        </div>  
+                    </section>
+                    <section id="d" class="text-center position-absolute d-flex">
+                        <div class="align-self-center w-100">
+                            <div class="container">
+                                <h2 class="d-none d-md-block font-weight-bold  mb-4">Can I get your full name ?</h2>
+                                <h4 class="d-md-none d-block font-weight-bold  mb-4">Can I get your full name ?</h4>
+                                <div class="row justify-content-center">
+                                    <div class="col-md-8 col-lg-6 mb-4">
+                                        <input placeholder="Enter your full name" type="text" class="form-control datetimepicker-input bg-transparent border-0 form-control rounded-0 m-auto" style="border-bottom: 2px solid red !important" id="name" />
+                                    </div>
+                                </div>
+                                <a id="next_name" href="#e" class="mb-5 next btn text-dark hide font-weight-bold" style="background: #a0c230">OK<img src="assets/img/icon/checked.svg" class="svg text-white mail ml-2 checked" style="height: 10px"></a>
+    
+                                <p class="font-weight-bold text-secondary mt-5">Can I get your phone number ?</p>
+                            </div>
+                        </div>  
+                    </section>
+                    <section id="e" class="text-center position-absolute d-flex">
+                        <div class="align-self-center w-100">
+                            <div class="container">
+                                <h2 class="d-none d-md-block font-weight-bold  mb-4">Can I get your phone number ?</h2>
+                                <h4 class="d-md-none d-block font-weight-bold  mb-4">Can I get your phone number ?</h4>
+                                <div class="row justify-content-center">
+                                    <div class="col-md-8 col-lg-6 mb-4">
+                                        <input placeholder="Enter your phone number" type="text" class="form-control datetimepicker-input bg-transparent border-0 form-control rounded-0 m-auto" style="border-bottom: 2px solid red !important" id="phone" />
+                                    </div>
+                                </div>
+                                <a id="next_phone" href="#f" class="mb-5 next btn text-dark hide font-weight-bold" style="background: #a0c230">OK<img src="assets/img/icon/checked.svg" class="svg text-white mail ml-2 checked" style="height: 10px"></a>
+    
+                                <p class="font-weight-bold text-secondary mt-5">Can I get your email ?</p>
+                            </div>
+                        </div>  
+                    </section>
+                    <section id="f" class="text-center position-absolute d-flex">
+                        <div class="align-self-center w-100">
+                            <div class="container">
+                                <h2 class="d-none d-md-block font-weight-bold  mb-4">Can I get your email ?</h2>
+                                <h4 class="d-md-none d-block font-weight-bold  mb-4">Can I get your email ?</h4>
+                                <div class="row justify-content-center">
+                                    <div class="col-md-8 col-lg-6 mb-4">
+                                        <input placeholder="Enter your email" type="mail" class="form-control datetimepicker-input bg-transparent border-0 form-control rounded-0 m-auto" style="border-bottom: 2px solid red !important" id="email" />
+                                    </div>
+                                </div>
+                                <a id="next_email" href="#g" class="mb-5 next btn text-dark hide font-weight-bold" style="background: #a0c230">OK<img src="assets/img/icon/checked.svg" class="svg text-white mail ml-2 checked" style="height: 10px"></a>
+    
+                                <p class="font-weight-bold text-secondary mt-5">Anything else you'd like us to khow ?</p>
+                            </div>
+                        </div>  
+                    </section>
+                    <section id="g" class="text-center position-absolute d-flex">
+                        <div class="align-self-center w-100">
+                            <div class="container">
+                                <h2 class="d-none d-md-block font-weight-bold  mb-4">Anything else you'd like us to khow ?</h2>
+                                <h4 class="d-md-none d-block font-weight-bold  mb-4">Anything else you'd like us to khow ?</h4>
+                                <div class="row justify-content-center">
+                                    <div class="col-md-8 col-lg-6 mb-4">
+                                        <input placeholder="Enter your notes here" type="email" class="form-control datetimepicker-input bg-transparent border-0 form-control rounded-0 m-auto" style="border-bottom: 2px solid red !important" id="notes" />
+                                    </div>
+                                </div>
+                                <a id="finish" href="#" data-backdrop="static" data-keyboard="false" data-toggle="modal" data-target="#finishModal" class="mb-5 btn text-dark show font-weight-bold" style="background: #a0c230">SUBMIT<img src="assets/img/icon/checked.svg" class="svg text-white mail ml-2 checked" style="height: 10px"></a>
+    
+                                <p class="font-weight-bold text-secondary mt-5">Finish</p>
+                            </div>
+                        </div>  
+                    </section>
+                </div>
+            </div>  
+        </div>
+        <!-- Modal -->
+        <div class="modal fade" id="finishModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered  modal-sm" role="document">
+              <div class="modal-content">
+                <div class="modal-body  text-center">
+                    <div class="rounded-circle" style="border: 4px solid black ; width: fit-content; margin: 10px auto;">
+                        <img src="assets/img/icon/checked.svg" class="svg text-white mail m-2 checked">
+                    </div>
+                    <h4 class="font-weight-bold">Thank You</h4>
+                    <p>Your booking was submitted successfuly</p>
+                </div>
+                <div class="modal-footer p-2 border-0">
+                  <button type="button" class="btn btn-light bg-transparent font-weight-bold" style="border:2px solid  #a0c230 " data-dismiss="modal">close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+    </body>
+    <!-- Script -->
+    <script src="assets/js/jquery-3.4.1.min.js"></script>
+    <script src="assets/js/popper.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/moment.js"></script>
+    <script src="assets/js/tempusdominus-bootstrap-4.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $('#datetime').datetimepicker({
+                format: 'DD MMMM YYYY [@]HH.mm a',
+                viewMode: 'years',
+                widgetPositioning : {
+                    vertical: 'top'
+                }
+            })
+            $('#datetime').on('change.datetimepicker', function(){
+                if($(this).val() !== '' ) 
+                    $('#next_datetime').removeClass('hide').addClass('show')
+                else $('#next_datetime').removeClass('show').addClass('hide')
+            });
+            $('#address').keyup(function(){
+                if($(this).val() !== '' )
+                    $('#next_address').removeClass('hide').addClass('show')
+                else $('#next_address').removeClass('show').addClass('hide')
+            })
+            $('#dropoff').keyup(function(){
+                if($(this).val() !== '' )
+                    $('#next_dropoff').removeClass('hide').addClass('show')
+                else $('#next_dropoff').removeClass('show').addClass('hide')
+            })
+            $('#name').keyup(function(){
+                if($(this).val() !== '' )
+                    $('#next_name').removeClass('hide').addClass('show')
+                else $('#next_name').removeClass('show').addClass('hide')
+            })
+            $('#email').keyup(function(){
+                if($(this).val() !== '' )
+                    $('#next_email').removeClass('hide').addClass('show')
+                else $('#next_email').removeClass('show').addClass('hide')
+            })
+            $('#phone').keyup(function(){
+                if($(this).val() !== '' )
+                    $('#next_phone').removeClass('hide').addClass('show')
+                else $('#next_phone').removeClass('show').addClass('hide')
+            })
+            $('#finishModal').on('hidden.bs.modal', function (e) {
+                window.location.href = './'
+            })
+            $('img.svg').each(function(){
+                var $img = jQuery(this);
+                var imgID = $img.attr('id');
+                var imgClass = $img.attr('class');
+                var imgURL = $img.attr('src');
+                jQuery.get(imgURL, function(data) {
+                    // Get the SVG tag, ignore the rest
+                    var $svg = jQuery(data).find('svg');
+
+                    // Add replaced image's ID to the new SVG
+                    if(typeof imgID !== 'undefined') {
+                        $svg = $svg.attr('id', imgID);
+                    }
+                    // Add replaced image's classes to the new SVG
+                    if(typeof imgClass !== 'undefined') {
+                        $svg = $svg.attr('class', imgClass+' replaced-svg');
+                    }
+
+                    // Remove any invalid XML tags as per http://validator.w3.org
+                    $svg = $svg.removeAttr('xmlns:a');
+
+                    // Check if the viewport is set, if the viewport is not set the SVG wont't scale.
+                    if(!$svg.attr('viewBox') && $svg.attr('height') && $svg.attr('width')) {
+                        $svg.attr('viewBox', '0 0 ' + $svg.attr('height') + ' ' + $svg.attr('width'))
+                    }
+
+                    // Replace image with new SVG
+                    $img.replaceWith($svg);
+
+                }, 'xml');
+            })
+            $('.nav-link').click(function(){
+                var target = $($(this).attr('href'));
+                if($(this).hasClass('done')) {
+                    $('.nav-link').removeClass('active')
+                    $('section').removeClass('active')
+
+                    $(this).addClass('active')
+                    target.addClass('active')
+
+                    var num = $('section').index(target) + 1;
+                    $('.number').text( '0' + num + '/07')
+                } 
+                return false;
+            });
+            $('.next').click(function(){
+                var target = $($(this).attr('href'));
+                $('.nav-link').removeClass('active')
+                $('section').removeClass('active')
+                $('.nav-link[href="' + $(this).attr('href') +'"]').addClass('done active')
+                target.addClass('active')
+
+
+                var num = $('section').index(target) + 1;
+                $('.number').text( '0' + num + '/07')
+                
+                
+                return false
+            })
+        })
+    </script>
+</html>
