@@ -107,7 +107,7 @@
         #home {
             min-height: 100vh;
             background-image: url(assets/img/image_1.png);
-            background-position-x: center;
+            background-position-x: 70%;
             background-repeat: no-repeat;
             background-size: cover;
             background-position-y: bottom;
