@@ -121,7 +121,7 @@
             border: 2px solid #a0c230;
         }
         #enquires {
-            background-image: url(assets/img/image_2.png);
+            background-image: url(assets/img/image_2.jpg);
             background-position-x: center;
             background-repeat: no-repeat;
             background-size: cover;
